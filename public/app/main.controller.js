@@ -5,13 +5,13 @@
         .module('app')
         .controller('MainController', MainController);
 
-    MainController.$inject = [];
+    MainController.$inject = ['JobsApi'];
 
     /* @ngInject */
-    function MainController() {
+    function MainController(JobsApi) {
         var vm = this;
         vm.title = 'MainController';
-        vm.jobs = [{
+        var jobs = [{
             title: 'develope',
             description: 'stay oon pc'
         }, {
@@ -22,6 +22,8 @@
             title: 'sales force',
             description: 'oelo'
         }]
+        
+        vm.jobs=JobsApi.query();
 
         activate();
 
