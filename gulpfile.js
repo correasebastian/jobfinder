@@ -2,9 +2,25 @@ var gulp = require('gulp');
 var $ = require('gulp-load-plugins')({
     lazy: true
 });
-var root = './views/';
 
-gulp.task('jade',['wiredep'], function() {
+var root = './views/';
+var test = './test/';
+
+var allTest = [test + '**/*.spec.js'];
+gulp.task('watchTest', function() {
+    gulp.watch(allTest, ['mocha']);
+});
+
+gulp.task('mocha', function() {
+    return gulp.src(test + '**/*.spec.js', {
+            read: false
+        })
+        // gulp-mocha needs filepaths so you can't have any plugins before it 
+        .pipe($.mocha({
+            reporter: 'nyan'
+        }));
+});
+gulp.task('jade', ['wiredep'], function() {
     return gulp.src(root + '**/*.jade')
         .pipe($.jade({
             pretty: true

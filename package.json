@@ -4,16 +4,19 @@
   "description": "ci ",
   "main": "index.js",
   "dependencies": {
+    "bluebird": "^3.0.6",
     "express": "^4.13.3",
     "jade": "^1.11.0",
     "mongoose": "^4.2.9"
   },
   "devDependencies": {
     "bower": "^1.6.8",
+    "chai": "^3.4.1",
     "gulp": "^3.9.0",
     "gulp-inject": "^3.0.0",
     "gulp-jade": "^1.1.0",
     "gulp-load-plugins": "^1.1.0",
+    "gulp-mocha": "^2.2.0",
     "gulp-util": "^3.0.7",
     "wiredep": "^2.2.2"
   },
