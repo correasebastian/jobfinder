@@ -1,0 +1,17 @@
+
+link(rel='stylesheet', href='bower_components/bootstrap/dist/css/bootstrap.min.css')
+//- inject:css
+
+link(rel="stylesheet", href="/app/main.css")
+
+//- endinject
+//- inject:js
+
+script(src="/app/app.module.js")
+
+script(src="/app/main.controller.js")
+
+//- endinject
+div.jumbotron(ng-app="app") hola
+    div(ng-controller="MainController as Main")
+

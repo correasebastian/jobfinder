@@ -1,0 +1,25 @@
+{
+  "name": "jobfinder",
+  "version": "1.0.0",
+  "description": "ci ",
+  "main": "index.js",
+  "dependencies": {
+    "express": "^4.13.3",
+    "ionic": "^1.7.7",
+    "jade": "^1.11.0"
+  },
+  "devDependencies": {
+    "bower": "^1.6.8",
+    "gulp": "^3.9.0",
+    "gulp-inject": "^3.0.0",
+    "gulp-jade": "^1.1.0",
+    "gulp-load-plugins": "^1.1.0",
+    "gulp-util": "^3.0.7",
+    "wiredep": "^2.2.2"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}

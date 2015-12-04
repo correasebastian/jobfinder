@@ -1,0 +1,22 @@
+
+link(rel='stylesheet', href='bower_components/bootstrap/dist/css/bootstrap.min.css')
+
+script(src="/bower_components/angular/angular.js")
+//- inject:css
+link(rel="stylesheet", href="/app/main.css")
+//- endinject
+
+body(ng-app="app").container
+    h1 Find a job
+    div(ng-controller="MainController as Main")
+        .list-group
+            a.list-group-item(href='#')(ng-repeat="job in Main.jobs")
+                h4.list-group-item-heading {{job.title}}
+                p.list-group-item-text {{job.description}}
+     
+        
+
+    //- inject:js
+    script(src="/app/app.module.js")
+    script(src="/app/main.controller.js")
+    //- endinject

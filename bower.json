@@ -1,0 +1,25 @@
+{
+  "name": "jobfinder",
+  "description": "ci",
+  "main": "index.js",
+  "authors": [
+    "correasebastian <correa.m.sebastian@gmail.com>"
+  ],
+  "license": "ISC",
+  "moduleType": [],
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.4.8",
+    "jquery": "~2.1.4",
+    "bootstrap": "~3.3.6",
+    "moment": "~2.10.6"
+  }
+}
