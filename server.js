@@ -17,7 +17,9 @@ app.get('/api/jobs', function(req, res) {
 app.get('*', function(req, res) {
     res.render('index');
 })
-mongoose.connect('mongodb://localhost/jobfinder')
+
+mongoose.connect('mongodb://devky:devky@ds061954.mongolab.com:61954/jobfinder')
+//mongoose.connect('mongodb://localhost/jobfinder')
 
 var con =mongoose.connection;
 
