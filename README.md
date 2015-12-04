@@ -19,3 +19,9 @@ The Cloud9 IDE team
 
 
 SEBASTIAN CORREA morales cano
+
+git config credential.helper store
+
+
+permission on mongod files
+chmod a+x mongod
