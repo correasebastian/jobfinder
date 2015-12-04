@@ -14,32 +14,32 @@ function resetJob() {
 
 }
 
+function mConnect() {
+    return new Promise(function(resolve, reject) {
+        con.once('open', resolve)
+    })
+}
+
+function getJobList() {
+    //works since with active mongoose.Promise = require('bluebird');
+    return mongoose.model('Job').find({}).exec();
+}
+
 var connectDB = Promise.promisify(mongoose.connect, mongoose);
 console.log(connectDB)
 
 describe('get jobs', function() {
     it('should never be empty since jobs are seeded', function(done) {
 
-        con.once('open',
-            function() {
-                console.log('connected to mongo successfully')
-
-                resetJob()
-                    .then(jobModel.seedJobs)
-                    .then(function() {
-                        mongoose.model('Job').find({}).exec(function(error, jobList) {
-                                expect(jobList.length).to.be.at.least(1)
-                                done()
-                            }) // body...
-                    })
-
-
-
-
+        mConnect()
+            .then(resetJob)
+            .then(jobModel.seedJobs)
+            .then(getJobList)
+            .then(function(jobList) {
+                //console.log(jobList);
+                expect(jobList.length).to.be.at.least(1)
+                done()
             })
-
-
-
-
+ 
     })
 })
