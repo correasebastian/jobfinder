@@ -1,42 +1,16 @@
 var expect = require("chai").expect
-var mongoose = require("mongoose")
-var jobModel = require('../models/Job');
-var Promise = require("bluebird");
-mongoose.Promise = require('bluebird');
+//var jobModel = require('../models/Job'); // este se tiene que ejecutar para que se registre el modelo ya sea aca o en ../jobs-data
+var jobsData = require("../jobs-data")
 var conString = 'mongodb://devky:devky@ds061954.mongolab.com:61954/jobfinder';
-mongoose.connect(conString)
-var con = mongoose.connection;
 
-function resetJob() {
-    return new Promise(function(resolve, reject) {
-        con.collections['jobs'].drop(resolve, reject)
-    })
-
-}
-
-function mConnect() {
-    return new Promise(function(resolve, reject) {
-        con.once('open', resolve)
-    })
-}
-
-function getJobList(query) {
-    if(query===undefined)
-        query={}
-    //works since with active mongoose.Promise = require('bluebird');
-    return mongoose.model('Job').find(query).exec();
-}
-
-var connectDB = Promise.promisify(mongoose.connect, mongoose);
-console.log(connectDB)
 
 describe('get jobs', function() {
     var jobs;
     before(function(done) {
-        mConnect()
-            .then(resetJob)
-            .then(jobModel.seedJobs)
-            .then(getJobList)
+        jobsData.mConnect(conString)
+            .then(jobsData.resetJob)
+            .then(jobsData.seedJobs)
+            .then(jobsData.findJobs)
             .then(function(jobList) {
                 jobs = jobList;
                 done()
